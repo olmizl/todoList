@@ -1,0 +1,300 @@
+@import "vars";
+@import "mixin";
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Roboto:wght@100;300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+body {
+  font-family: "Roboto", "Noto Sans KR", sans-serif;
+  font-size: 16px;
+  color: #111;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style: none;
+}
+
+$red: rgb(218, 15, 15);
+$blue: rgb(15, 103, 218);
+
+#header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35%;
+  height: 60px;
+  position: relative;
+  z-index: 99;
+  overflow: hidden;
+  box-shadow: 0 6px 3px rgb(0 0 0 / 50%);
+  background-color: #e7e7e7;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 51px;
+  border-radius: 50px;
+  h1 {
+    font-size: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+    strong {
+      font-weight: 700;
+    }
+  }
+}
+input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.checkBox {
+  display: inline-block;
+  margin-right: 20px;
+  vertical-align: middle;
+
+  cursor: pointer;
+  input {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+    padding: 0;
+    border: 0;
+  }
+  input:checked ~ .label:before {
+    content: "\e5ca";
+    font-family: "Material Icons";
+    color: #fff;
+    border: none;
+    font-weight: bold;
+    background-color: lighten($blue, 10);
+
+    @include longShadow($blue, 10);
+  }
+  .label {
+    display: flex;
+    align-items: center;
+    user-select: none;
+    &:before {
+      content: "\e5ca";
+      width: 25px;
+      height: 25px;
+      overflow: hidden;
+      margin-right: 6px;
+      font-family: "Material Icons";
+      color: darken(#f8f8f8, 30);
+      border: 1px solid darken(#f8f8f8, 20);
+      font-weight: bold;
+      border-radius: 5px;
+      box-sizing: border-box;
+      background-color: #f8f8f8;
+      @include longShadow(darken(#f8f8f8, 10), 10);
+    }
+  }
+}
+
+.container {
+  width: 800px;
+  margin: 50px auto;
+}
+
+.addBox {
+  border: 1px solid #ccc;
+  padding: 35px;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-bottom: 1px solid #222;
+  background-color: #fff;
+  padding: 0 20px;
+  font-family: inherit;
+  &:focus {
+    outline-color: $red;
+  }
+}
+textarea {
+  height: 200px;
+  resize: none;
+  padding: 20px;
+  margin-top: 20px;
+}
+.section {
+  margin-bottom: 20px;
+  text-align: left;
+  color: #000;
+}
+label {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #fff;
+  display: block;
+}
+.btns {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  .btn {
+    padding: 20px 50px;
+    color: #fff;
+    border-radius: 100px;
+    background-color: $blue;
+    border: none;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    line-height: 1;
+    font-weight: 700;
+    overflow: hidden;
+    @include longShadow(darken($blue, 10), 40);
+  }
+  .btnDelete {
+    background-color: red;
+    @include longShadow(darken($red, 10), 40);
+  }
+  .btnCheck {
+    background-color: #479d28;
+    @include longShadow(darken(#479d28, 10), 40);
+  }
+}
+
+.diaryItem {
+  transition: all 0.25s ease-in-out;
+  textarea {
+    height: 100px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+  }
+  &.liDone {
+    opacity: 0.5;
+    .contents {
+      color: #eb0000;
+      text-decoration: line-through;
+    }
+    .info {
+      .btns {
+        .btn {
+          pointer-events: none;
+        }
+      }
+    }
+  }
+}
+
+.infoBox {
+  background-color: #ffcccc;
+  border-radius: 10px;
+  margin: 20px auto;
+  padding: 20px;
+  width: 800px;
+  display: flex;
+  justify-content: space-around;
+  dl {
+    display: flex;
+    align-items: center;
+    dd {
+      margin-left: 5px;
+      transform: translateY(2px);
+    }
+  }
+}
+.diaryList {
+  .titleBox {
+    color: #000;
+    margin: 50px 0;
+    padding-top: 50px;
+    border-top: 1px dashed #fff;
+    h2 {
+      font-size: 32px;
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .total {
+      text-align: right;
+    }
+  }
+  .list {
+    li {
+      padding: 20px;
+      background-color: #d1ecf7;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      .info {
+        display: flex;
+        position: relative;
+      }
+      dl {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+        dd {
+          margin-left: 5px;
+        }
+      }
+      .btns {
+        position: absolute;
+        right: 0;
+        top: 0;
+        margin-top: -5px;
+        .btn {
+          border-radius: 25px;
+          padding: 5px;
+          margin-left: 5px;
+        }
+
+        .confirm {
+          background-color: $red;
+          @include longShadow(darken($red, 10), 30);
+        }
+      }
+      .contents {
+        margin-top: 20px;
+        font-weight: 500;
+        font-size: 18px;
+        padding-top: 20px;
+        border-top: 1px dashed #000;
+        white-space: pre-wrap;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        // &.done {
+        //   text-decoration: line-through;
+        //   color: #eb0000;
+        // }
+      }
+    }
+  }
+}
+#footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+  margin-bottom: 50px;
+  p {
+    padding: 15px 30px;
+    background-color: #e3e3e3;
+    font-weight: 300;
+    border-radius: 100px;
+    text-transform: uppercase;
+    strong {
+      font-weight: 900;
+    }
+  }
+}
