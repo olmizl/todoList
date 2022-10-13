@@ -1,7 +1,6 @@
 import DiaryItem from "./DiaryItem";
 
 export default function DiaryList({ diaryList }) {
-  console.log(diaryList);
   const total = diaryList.length;
   return (
     <div className="diaryList">

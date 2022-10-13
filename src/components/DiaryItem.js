@@ -1,13 +1,18 @@
 import { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
-import { insertDiary, deleteDiary, modifyDiary } from "../store/diary";
+import { deleteDiary, modifyDiary, checkDiary } from "../store/diary";
+import DiaryList from "./DiaryList";
+// import CheckBox from "../Styled/todoItem-Styled";
+import { FaRegSquare, FaRegCheckSquare } from "react-icons/fa";
 
 export default function DiaryItem({ writer, id, emotion, contents, date }) {
   const [isEdit, setIsEdit] = useState(false);
   const [localContents, setLocalContents] = useState(contents);
   const contentsRef = useRef();
   const dispatch = useDispatch();
+
   const [isDone, setIsDone] = useState(true);
+
   const toggleDone = () => {
     setIsDone(!isDone);
   };
@@ -22,6 +27,10 @@ export default function DiaryItem({ writer, id, emotion, contents, date }) {
         <dl>
           <dt>중요도</dt>
           <dd>{emotion}</dd>
+        </dl>
+        <dl>
+          <dt>완성</dt>
+          <dd>{isDone}</dd>
         </dl>
         <dl>
           <dt>날짜</dt>
@@ -93,7 +102,21 @@ export default function DiaryItem({ writer, id, emotion, contents, date }) {
         </>
       ) : (
         <div className="contents">
-          <input type="checkbox" onChange={toggleDone} />
+          {/* <input type="checkbox" onClick={() => dispatch(checkDiary(id))}>
+            {isDone ? <FaRegCheckSquare size="25px" color="#84a98c" /> : <FaRegSquare size="25px" />}
+          </input> */}
+          <input
+            type="checkbox"
+            checked={!isDone}
+            onClick={() => {
+              dispatch(checkDiary(id));
+              setIsDone(!isDone);
+              {
+                isDone ? <FaRegCheckSquare size="25px" color="#84a98c" /> : <FaRegSquare size="25px" />;
+              }
+            }}
+          />
+
           {contents}
         </div>
       )}

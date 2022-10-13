@@ -14,6 +14,7 @@ export default function DiaryEditor() {
     writer: "",
     contents: "",
     emotion: 1,
+    isDone: false,
   });
   const insertDiaryItem = function () {
     if (diaryItem.writer.length < 3) {
@@ -32,6 +33,7 @@ export default function DiaryEditor() {
       writer: "",
       contents: "",
       emotion: 1,
+      isDone: false,
     });
   };
   function changeDiaryItem(e) {
@@ -58,6 +60,7 @@ export default function DiaryEditor() {
           <option value="5">5</option>
         </select>
       </div>
+
       <div className="btns section">
         <button className="btn btnSave" onClick={insertDiaryItem}>
           Add New Task
