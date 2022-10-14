@@ -5,7 +5,7 @@
 https://dainty-dasik-2993ea.netlify.app/
 
 ## 주요기능
-[1] 반복되는 component를 map함수를 이용하여 차례대로 출력하는 기능 구현
+[1] 반복되는 component를 map함수를 이용하여 차례대로 출력하는 기능 구현</br>
 [2] useRef 와 useState Hook을 이용하여 상태 , 값 변경시 자동 반영되게 기능 구현</br>
 [3] react-redux 이용하여 방대한 양의 props 저장 및 불러오는 기능 구현</br>
 [4] react-redux 의 store.js에 저장된 props의 id를 비교하여 삭제 기능 구현 </br>
